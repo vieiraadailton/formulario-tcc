@@ -1,0 +1,379 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   publico/css/estilos.css
+   Estilos da aplicação Cadastro de Resultados.
+   Organizado em seções: Reset → Temas → Layout → Componentes → Formulário
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── 1. Reset & Base ────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ── 2. Tema Escuro (padrão) ────────────────────────────────────────────────── */
+:root {
+    --ambar:          #e8a020;
+    --ambar-escuro:   #c47a10;
+    --fundo:          #111418;
+    --superficie:     #1a1f26;
+    --superficie2:    #232930;
+    --borda:          #2e3540;
+    --texto:          #e8e2d6;
+    --texto-suave:    #7a8494;
+    --erro:           #e05555;
+    --sucesso:        #4caf78;
+    --aviso:          #e8a020;
+    --raio:           6px;
+    --radio-adulterado: #e05555;
+    --radio-aprovado:   #4caf78;
+}
+
+/* ── 3. Tema Claro ──────────────────────────────────────────────────────────── */
+[data-tema="claro"] {
+    --ambar:          #c47a10;
+    --ambar-escuro:   #9e5e08;
+    --fundo:          #f0f2f5;
+    --superficie:     #ffffff;
+    --superficie2:    #f5f7fa;
+    --borda:          #d4dae3;
+    --texto:          #1a1f26;
+    --texto-suave:    #6b7685;
+    --erro:           #c0392b;
+    --sucesso:        #27ae60;
+    --aviso:          #c47a10;
+    --radio-adulterado: #c0392b;
+    --radio-aprovado:   #27ae60;
+}
+
+/* ── 4. Layout Base ─────────────────────────────────────────────────────────── */
+body {
+    font-family: 'Barlow', sans-serif;
+    background: var(--fundo);
+    color: var(--texto);
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 40px 16px 60px;
+    transition: background .25s, color .25s;
+}
+
+.container {
+    width: 100%;
+    max-width: 680px;
+}
+
+/* ── 5. Cabeçalho ───────────────────────────────────────────────────────────── */
+.cabecalho {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 36px;
+}
+
+.cabecalho-icone {
+    width: 52px;
+    height: 52px;
+    background: var(--ambar);
+    border-radius: var(--raio);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    flex-shrink: 0;
+}
+
+.cabecalho-titulo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    line-height: 1;
+    color: var(--texto);
+}
+
+.cabecalho-subtitulo {
+    font-size: 13px;
+    color: var(--texto-suave);
+    margin-top: 4px;
+    letter-spacing: 0.02em;
+}
+
+/* ── 6. Mensagem de Retorno ─────────────────────────────────────────────────── */
+.mensagem {
+    padding: 14px 18px;
+    border-radius: var(--raio);
+    margin-bottom: 28px;
+    font-size: 14px;
+    font-weight: 500;
+    border-left: 4px solid;
+}
+
+.mensagem.sucesso { background: rgba(76,175,120,.12);  border-color: var(--sucesso); color: var(--sucesso); }
+.mensagem.erro    { background: rgba(224,85,85,.12);   border-color: var(--erro);    color: var(--erro);    }
+.mensagem.aviso   { background: rgba(232,160,32,.12);  border-color: var(--aviso);   color: var(--aviso);   }
+
+/* ── 7. Card do Formulário ──────────────────────────────────────────────────── */
+.cartao {
+    background: var(--superficie);
+    border: 1px solid var(--borda);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.cartao-secao {
+    padding: 28px 32px;
+    border-bottom: 1px solid var(--borda);
+}
+
+.cartao-secao:last-child { border-bottom: none; }
+
+.secao-rotulo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ambar);
+    margin-bottom: 20px;
+}
+
+/* ── 8. Grid Responsivo ─────────────────────────────────────────────────────── */
+.grade            { display: grid; gap: 18px; }
+.grade-2-colunas  { grid-template-columns: 1fr 1fr; }
+.grade-3-colunas  { grid-template-columns: 2fr 1fr; }
+
+@media (max-width: 520px) {
+    .grade-2-colunas,
+    .grade-3-colunas { grid-template-columns: 1fr; }
+    .cartao-secao    { padding: 24px 20px; }
+}
+
+/* ── 9. Campos do Formulário ────────────────────────────────────────────────── */
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+label {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--texto-suave);
+    text-transform: uppercase;
+}
+
+input[type="text"],
+select {
+    background: var(--superficie2);
+    border: 1px solid var(--borda);
+    border-radius: var(--raio);
+    color: var(--texto);
+    font-family: 'Barlow', sans-serif;
+    font-size: 15px;
+    padding: 11px 14px;
+    width: 100%;
+    transition: border-color .18s, box-shadow .18s;
+    outline: none;
+    -webkit-appearance: none;
+}
+
+input[type="text"]:focus,
+select:focus {
+    border-color: var(--ambar);
+    box-shadow: 0 0 0 3px rgba(232,160,32,.15);
+}
+
+input[type="text"].invalido,
+select.invalido {
+    border-color: var(--erro);
+    box-shadow: 0 0 0 3px rgba(224,85,85,.12);
+}
+
+select            { cursor: pointer; }
+select option     { background: var(--superficie2); }
+
+.erro-campo {
+    font-size: 12px;
+    color: var(--erro);
+    margin-top: 2px;
+}
+
+/* ── 10. Contador de Caracteres ─────────────────────────────────────────────── */
+.contador {
+    font-size: 11px;
+    color: var(--texto-suave);
+    text-align: right;
+    margin-top: -4px;
+}
+
+/* ── 11. Botões de Ação ─────────────────────────────────────────────────────── */
+.area-botoes {
+    display: flex;
+    gap: 12px;
+    padding: 24px 32px;
+    background: var(--superficie);
+}
+
+@media (max-width: 400px) {
+    .area-botoes { flex-direction: column; }
+}
+
+.botao {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border: none;
+    border-radius: var(--raio);
+    padding: 12px 28px;
+    cursor: pointer;
+    transition: background .15s, transform .1s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.botao:active { transform: scale(0.97); }
+
+.botao-principal {
+    background: var(--ambar);
+    color: #111;
+    flex: 1;
+}
+
+.botao-principal:hover { background: var(--ambar-escuro); }
+
+.botao-secundario {
+    background: var(--superficie2);
+    color: var(--texto-suave);
+    border: 1px solid var(--borda);
+}
+
+.botao-secundario:hover { background: var(--borda); color: var(--texto); }
+
+/* ── 12. Botão de Alternância de Tema ───────────────────────────────────────── */
+.alternador-tema {
+    position: fixed;
+    top: 16px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--superficie);
+    border: 1px solid var(--borda);
+    border-radius: 50px;
+    padding: 6px 14px;
+    cursor: pointer;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--texto-suave);
+    transition: background .2s, color .2s, border-color .2s;
+    user-select: none;
+    z-index: 100;
+}
+
+.alternador-tema:hover { color: var(--texto); border-color: var(--ambar); }
+
+.alternador-tema .icone-tema { font-size: 16px; }
+
+/* ── 13. Radio Buttons Customizados ─────────────────────────────────────────── */
+.grupo-radio {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.opcao-radio {
+    flex: 1;
+    min-width: 140px;
+    position: relative;
+}
+
+/* Oculta o radio nativo sem removê-lo do DOM */
+.opcao-radio input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.rotulo-radio {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 18px;
+    background: var(--superficie2);
+    border: 2px solid var(--borda);
+    border-radius: var(--raio);
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--texto-suave);
+    transition: border-color .18s, background .18s, color .18s;
+    user-select: none;
+}
+
+.rotulo-radio .indicador-radio {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2px solid var(--borda);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: border-color .18s;
+}
+
+/* Bolinha interna do radio */
+.rotulo-radio .indicador-radio::after {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: transparent;
+    transition: background .18s;
+}
+
+/* ── Adulterado selecionado ── */
+.opcao-radio input[value="0"]:checked + .rotulo-radio {
+    border-color: var(--radio-adulterado);
+    background: rgba(224,85,85,.08);
+    color: var(--radio-adulterado);
+}
+.opcao-radio input[value="0"]:checked + .rotulo-radio .indicador-radio {
+    border-color: var(--radio-adulterado);
+}
+.opcao-radio input[value="0"]:checked + .rotulo-radio .indicador-radio::after {
+    background: var(--radio-adulterado);
+}
+
+/* ── Aprovado selecionado ── */
+.opcao-radio input[value="1"]:checked + .rotulo-radio {
+    border-color: var(--radio-aprovado);
+    background: rgba(76,175,120,.08);
+    color: var(--radio-aprovado);
+}
+.opcao-radio input[value="1"]:checked + .rotulo-radio .indicador-radio {
+    border-color: var(--radio-aprovado);
+}
+.opcao-radio input[value="1"]:checked + .rotulo-radio .indicador-radio::after {
+    background: var(--radio-aprovado);
+}
+
+/* ── Hover nos não selecionados ── */
+.opcao-radio input[type="radio"]:not(:checked) + .rotulo-radio:hover {
+    border-color: var(--ambar);
+    color: var(--texto);
+}
+
+/* ── Grupo com erro ── */
+.grupo-radio-invalido .rotulo-radio {
+    border-color: var(--erro) !important;
+}
