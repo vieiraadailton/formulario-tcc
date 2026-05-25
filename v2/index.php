@@ -67,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['acao'] ?? '') === 'salvar'
             $idGerado     = $repositorio->inserir($fornecedor);
             $rotulo       = $fornecedor->rotuloDaAnalise();
 
-            $notificacao = "✅ Resultado cadastrado com sucesso! (ID: {$idGerado} — Status: {$rotulo})";
+            $notificacao = "✅ Resultado cadastrado com sucesso!";
             $tipoNotific = 'sucesso';
 
             // Limpa os campos após salvar com sucesso
@@ -395,3 +395,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['acao'] ?? '') === 'salvar'
 </script>
 </body>
 </html>
+

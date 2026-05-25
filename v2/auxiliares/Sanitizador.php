@@ -28,9 +28,8 @@ class Sanitizador
 
     // ── Métodos privados de sanitização ───────────────────────────────────────
 
-    /**
-     * Remove espaços extras e converte caracteres especiais HTML.
-     * Protege contra XSS (Cross-Site Scripting).
+    /*
+     Remove espaços extras e converte caracteres especiais HTML.
      */
     private static function texto(string $valor): string
     {
