@@ -6,6 +6,6 @@
 
 define('BD_SERVIDOR', 'localhost');
 define('BD_USUARIO',  'root');
-define('BD_SENHA',    '');
+define('BD_SENHA',    'root');
 define('BD_NOME',     'cadastro_bebidas');
 define('BD_CHARSET',  'utf8mb4');

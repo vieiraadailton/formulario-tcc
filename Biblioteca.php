@@ -407,7 +407,7 @@ class ControladorFormulario
             $idGerado    = $dao->inserir($fornecedor);
             $rotulo      = $fornecedor->rotuloDaAnalise();
 
-            $this->notificacao = "✅ Resultado cadastrado com sucesso! (ID: {$idGerado} — Status: {$rotulo})";
+            $this->notificacao = "✅ Resultado cadastrado com sucesso! (Status: {$rotulo})";
             $this->tipoNotific = 'sucesso';
             $this->camposForm  = array_fill_keys(array_keys($this->camposForm), '');
 
